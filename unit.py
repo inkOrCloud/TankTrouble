@@ -66,6 +66,14 @@ class Cannonball(pygame.sprite.Sprite):
     def move(self, x, y):
         self.rect.x += x
         self.rect.y += y
+        if self.rect.centerx < 0:
+            self.rect.centerx = SURFACE.get_width()
+        elif self.rect.centerx > SURFACE.get_width():
+            self.rect.centerx = 0
+        if self.rect.centery < 0:
+            self.rect.centery = SURFACE.get_height()
+        elif self.rect.centery > SURFACE.get_height():
+            self.rect.centery = 0
         pass
 
     def update(self):
@@ -190,7 +198,7 @@ class Tank(pygame.sprite.Sprite):
             return
         radian = math.radians(self.angle)
         Cannonball(self.center[0] + 20 * math.cos(radian), self.center[1] - 20 * math.sin(radian),
-                   self.angle, self.ser_num, max_distance= 500)
+                   self.angle, self.ser_num, max_distance = SURFACE.get_width())
         self.last_fire = FRAME_COUNTER
     pass
 

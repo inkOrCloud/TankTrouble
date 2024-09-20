@@ -7,6 +7,7 @@ DARKGRAY = (169, 169, 169)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
+GRAY = (128, 128, 128)
 WIDTH = 0
 HEIGHT = 0
 
@@ -116,7 +117,7 @@ COLORS = [RED, BLUE, GREEN]
 class ScoringBoard:
     def __init__(self, width: int, height: int, player_count: int):
         self.surface = pygame.Surface((width, height))
-        self.surface.fill(WHITE)
+        self.surface.fill(GRAY)
         self.player_count = player_count
         self.font = pygame.font.Font(None, int(height / (player_count + 2)))
         self.players_score = [0] * player_count
@@ -134,7 +135,7 @@ class ScoringBoard:
         self.update()
 
     def update(self):
-        self.surface.fill(WHITE)
+        self.surface.fill(GRAY)
         for i in range(self.player_count):
             score_img = self.font.render(str(self.players_score[i]), True, COLORS[i])
             score_rect = score_img.get_rect(

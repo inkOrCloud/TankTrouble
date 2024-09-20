@@ -77,8 +77,11 @@ def gaming():
     player0, player0_control = player0_preset_create(gaming_map)
     player1, player1_control = player1_preset_create(gaming_map)
     def score_count(tank: unit.Tank, ball: unit.Cannonball):
-        score.score_up(ball.player_ser)
-        score.score_down(tank.ser_num)
+        if tank.ser_num == ball.player_ser:
+            score.score_down(tank.ser_num)
+        else:
+            score.score_up(ball.player_ser)
+            score.score_down(tank.ser_num)
     def resurgence(tank: unit.Tank, ball: unit.Cannonball):
         match tank.ser_num:
             case 0:
